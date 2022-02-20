@@ -1,14 +1,13 @@
 from turtle import position
 from ursina import *
 import math
-from ursina.prefabs.first_person_controller import FirstPersonController
-
 
 def update():
     global t
     t = t + 0.02
     angle = math.pi*40/180
-
+    
+    #xoay quanh mặt trời
     radius_1 = 2
     mercury.x = math.cos(t)*radius_1
     mercury.z = math.sin(t)*radius_1
@@ -45,6 +44,7 @@ def update():
     pluto.x = math.cos(t+angle*8)*radius_9
     pluto.z = math.sin(t+angle*8)*radius_9
 
+    #tự xoay quanh trục 
     sun.rotation_y += time.dt*20
     mercury.rotation_y += time.dt*20
     earth.rotation_y += time.dt*20
@@ -67,7 +67,6 @@ class Sky(Entity):
         )
 
 app = Ursina()
-
 sku = Sky()
 EditorCamera()
 
